@@ -21,7 +21,7 @@ return {
         'wmic OS get FreePhysicalMemory'
       }
     elseif wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-      success, result = wezterm.run_child_process { 'bash', '-c', 'free -m | awk \'NR==2{printf "%.2f", $3*100/$2 }\'' }
+      success, result = wezterm.run_child_process { 'bash', '-c', 'free -m | awk \'NR==2{printf "%.0f", $3*100/$2 }\'' }
     elseif wezterm.target_triple == 'x86_64-apple-darwin' or wezterm.target_triple == 'aarch64-apple-darwin' then
       success, result = wezterm.run_child_process { 'vm_stat' }
     end
